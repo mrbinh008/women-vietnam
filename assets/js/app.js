@@ -743,12 +743,28 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   // Lightbox Controls
+  function closeLightboxModal() {
+    stopAlbumSlideshow();
+    const modal = document.getElementById('lightboxModal');
+    if (modal) modal.classList.add('hidden');
+  }
+
   const btnCloseLightbox = document.getElementById('btnCloseLightbox');
   if (btnCloseLightbox) {
-    btnCloseLightbox.addEventListener('click', () => {
-      stopAlbumSlideshow();
-      const modal = document.getElementById('lightboxModal');
-      if (modal) modal.classList.add('hidden');
+    btnCloseLightbox.addEventListener('click', closeLightboxModal);
+  }
+
+  const btnMobileCloseLightbox = document.getElementById('btnMobileCloseLightbox');
+  if (btnMobileCloseLightbox) {
+    btnMobileCloseLightbox.addEventListener('click', closeLightboxModal);
+  }
+
+  const lightboxModal = document.getElementById('lightboxModal');
+  if (lightboxModal) {
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) {
+        closeLightboxModal();
+      }
     });
   }
 
