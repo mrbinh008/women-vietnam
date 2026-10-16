@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Chúc Mừng 20/10 - Gửi Người Con Gái Anh Yêu</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="min-h-screen relative selection:bg-green-200 selection:text-green-900">
+
+  <!-- Background Falling Petals Canvas -->
+  <canvas id="petalsCanvas" class="fixed inset-0 pointer-events-none z-10"></canvas>
+
+  <!-- Toast Notification -->
+  <div id="toastBox" role="status" aria-live="polite" class="fixed bottom-5 right-5 z-50 hidden transform transition-all duration-300 translate-y-2 opacity-0">
+    <div class="bg-green-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-green-700">
+      <span id="toastIcon" class="text-xl">💖</span>
+      <span id="toastMessage" class="text-sm font-medium">Đã lưu thay đổi!</span>
+    </div>
+  </div>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/75 backdrop-blur-md border-b border-green-100">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-lg shadow-sm animate-heart">💗</span>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-green-500">Happy Vietnamese Women's Day</p>
+          <h1 class="text-sm sm:text-base font-bold text-green-950 font-serif-title">20/10 Ngọt Ngào Bên <span class="recipient-name-display text-green-600">Em Yêu</span></h1>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav aria-label="Điều hướng nội dung" class="section-nav">
+        <button type="button" data-section="sec-letter" class="nav-scroll-btn px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-green-500 text-white shadow-sm transition" aria-label="Thư tình"><span aria-hidden="true">💌</span><span>Thư tình</span></button>
+        <button type="button" data-section="sec-bouquet" class="nav-scroll-btn px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium text-green-800 hover:bg-green-100 transition" aria-label="Hoa & quà"><span aria-hidden="true">💐</span><span>Hoa & quà</span></button>
+        <button type="button" data-section="sec-album" class="nav-scroll-btn px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium text-green-800 hover:bg-green-100 transition" aria-label="Album"><span aria-hidden="true">📸</span><span>Album</span></button>
+        <button type="button" data-section="sec-memories" class="nav-scroll-btn px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium text-green-800 hover:bg-green-100 transition" aria-label="Lọ sao"><span aria-hidden="true">✨</span><span>Lọ sao</span></button>
+      </nav>
+
+      <!-- Action Controls: Music, Petals, Customize -->
+      <div class="header-actions flex items-center gap-2">
+        <button id="btnToggleMusic" aria-label="Bật hoặc tắt nhạc nền" type="button" class="px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-champagne-50 text-champagne-900 border border-champagne-200 hover:bg-champagne-100 transition flex items-center gap-2 shadow-sm" title="Bật/Tắt giai điệu lãng mạn">
+          <span id="musicStatusIcon">🎵</span>
+          <span id="musicStatusText" class="hidden sm:inline">Nhạc nền</span>
+          <span id="musicEq" class="hidden items-end gap-0.5 h-4">
+            <span class="w-1 bg-green-500 rounded-full eq-bar-1"></span>
+            <span class="w-1 bg-green-500 rounded-full eq-bar-2"></span>
+            <span class="w-1 bg-green-500 rounded-full eq-bar-3"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="relative z-20 max-w-6xl mx-auto px-4 pt-6 pb-20 space-y-14">
+
+    <!-- HERO SECTION -->
+    <section id="sec-hero" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
+      <div class="lg:col-span-7 space-y-5">
+        <h2 class="text-3xl sm:text-5xl font-bold font-serif-title text-green-950 leading-tight">
+          Gửi <span class="recipient-name-display text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-champagne-600">Công Chúa Của Anh</span>,<br/>
+          Người Làm Thế Giới Của Anh Rực Rỡ Hơn Mỗi Ngày
+        </h2>
+
+        <p id="heroSubtitleDisplay" class="text-base sm:text-lg text-green-800/90 leading-relaxed">
+          Nhân ngày 20/10, anh tạo riêng góc nhỏ đầy hoa và giai điệu này dành tặng em. Cảm ơn em vì đã đến bên anh, dịu dàng sưởi ấm từng khoảnh khắc và là điều ngọt ngào nhất trong cuộc đời anh.
+        </p>
+
+        <!-- Quick Interactive Bar -->
+        <div class="hero-actions flex flex-wrap items-center gap-3 pt-2">
+          <button id="btnJumpToLetter" type="button" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-green-600 to-emerald-500 text-white font-semibold shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:-translate-y-0.5 transition flex items-center gap-2">
+            <span>💌</span>
+            <span>Mở Bức Thư Tình 20/10</span>
+          </button>
+
+          <button id="btnSendHeartBurst" type="button" class="px-5 py-3 rounded-2xl bg-white text-green-700 font-semibold border border-green-200 hover:bg-green-50 shadow-sm transition flex items-center gap-2">
+            <span class="animate-heart">💖</span>
+            <span>Thả Tim Cho Em (<span id="heartCountDisplay">2010</span>)</span>
+          </button>
+        </div>
+
+        <!-- Love Counter Stats Row -->
+        <div class="hero-stats grid grid-cols-3 gap-3 pt-3">
+          <div class="glass-card rounded-2xl p-3.5 text-center">
+            <p class="text-xs text-green-500 font-medium">Ngày Bên Nhau</p>
+            <p id="statDaysCount" class="text-xl sm:text-2xl font-bold text-green-900 font-serif-title mt-0.5">365+</p>
+            <p class="text-[11px] text-green-600/80">Trọn vẹn yêu thương</p>
+          </div>
+          <div class="glass-card rounded-2xl p-3.5 text-center">
+            <p class="text-xs text-green-500 font-medium">Độ Ngọt Ngào</p>
+            <p id="statSweetness" class="text-xl sm:text-2xl font-bold text-green-900 font-serif-title mt-0.5">1000%</p>
+            <p class="text-[11px] text-green-600/80">Không ngừng tăng lên</p>
+          </div>
+          <div class="glass-card rounded-2xl p-3.5 text-center">
+            <p class="text-xs text-green-500 font-medium">Quà & Voucher</p>
+            <p id="statVouchersOpened" class="text-xl sm:text-2xl font-bold text-green-900 font-serif-title mt-0.5">0 / 3</p>
+            <p class="text-[11px] text-green-600/80">Đang chờ em mở</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Illustration Frame -->
+      <div class="hero-art lg:col-span-5">
+        <div class="relative mx-auto max-w-md lg:max-w-none animate-float">
+          <div class="absolute -inset-2 bg-gradient-to-r from-green-400 via-emerald-300 to-champagne-200 rounded-3xl blur-xl opacity-60"></div>
+          <div class="relative glass-card rounded-3xl p-3 overflow-hidden border-2 border-white">
+            <img src="assets/images/bouquet.jpg" alt="Bó hoa hồng lãng mạn 20/10" class="w-full h-auto rounded-2xl object-cover shadow-inner" />
+            <div class="p-3.5 flex items-center justify-between bg-white/90 rounded-xl mt-2.5">
+              <div>
+                <p class="text-xs font-semibold text-green-500">Bó Hoa Tươi Thắm Nhất</p>
+                <p class="text-sm font-bold text-green-950">Dành riêng tặng <span class="recipient-name-display">Em Yêu</span> ngày 20/10</p>
+              </div>
+              <span class="text-2xl">🌹</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE WAX-SEALED LOVE LETTER SECTION -->
+    <section id="sec-letter" class="glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-green-100">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-green-500">Bức Thư Tình 20/10</span>
+          <h3 class="text-2xl sm:text-3xl font-bold font-serif-title text-green-950 mt-1">Lời Nhắn Từ Trái Tim <span class="sender-name-display text-green-600">Anh</span></h3>
+        </div>
+
+        <!-- Preset Wish Selector Pills -->
+        <div class="letter-presets flex flex-wrap items-center gap-1.5">
+          <span class="text-xs text-green-600 mr-1 font-medium">Chọn phong cách thư:</span>
+          <button type="button" data-preset="romantic" class="preset-letter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-green-600 text-white shadow-sm transition">💖 Ngọt ngào</button>
+          <button type="button" data-preset="deep" class="preset-letter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-green-50 text-green-800 hover:bg-green-100 border border-green-200 transition">🌙 Sâu lắng</button>
+          <button type="button" data-preset="cute" class="preset-letter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-green-50 text-green-800 hover:bg-green-100 border border-green-200 transition">🍓 Đáng yêu</button>
+          <button type="button" data-preset="poem" class="preset-letter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-green-50 text-green-800 hover:bg-green-100 border border-green-200 transition">✨ Thơ tình</button>
+        </div>
+      </div>
+
+      <!-- Envelope Closed State -->
+      <div id="envelopeClosedView" class="py-8 text-center max-w-xl mx-auto space-y-6">
+        <div class="relative mx-auto w-56 h-40 sm:w-64 sm:h-44 rounded-2xl overflow-hidden shadow-lg border-2 border-white">
+          <img src="assets/images/love-letter.jpg" alt="Phong bì thư tình 20/10" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-green-950/50 via-transparent to-transparent flex items-end justify-center p-3">
+            <span class="text-white text-xs font-medium tracking-wide">Gửi người con gái anh thương nhất</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-lg font-serif-title font-semibold text-green-900">Một bức thư được niêm phong bằng cả trái tim</p>
+          <p class="text-sm text-green-700">Chạm vào dấu sáp trái tim bên dưới để mở bức thư anh viết riêng cho <span class="recipient-name-display font-semibold">Em Yêu</span> nhé!</p>
+        </div>
+
+        <div class="pt-2 flex justify-center">
+          <button id="btnOpenEnvelope" type="button" class="wax-seal w-20 h-20 rounded-full flex flex-col items-center justify-center text-white cursor-pointer border-2 border-green-200/60">
+            <span class="text-2xl">💌</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider mt-0.5">Mở Thư</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Envelope Opened State (Letter Paper) -->
+      <div id="envelopeOpenedView" class="hidden mt-6">
+        <div class="paper-texture rounded-2xl p-6 sm:p-10 border border-green-200 shadow-inner max-w-3xl mx-auto relative">
+          <div class="flex items-center justify-between mb-4">
+            <p class="font-handwriting text-2xl sm:text-3xl text-green-700">Gửi <span class="recipient-name-display">Em Yêu</span> của anh,</p>
+            <span class="text-xs font-medium text-green-400 bg-green-50 px-3 py-1 rounded-full border border-green-100">Ngày 20 tháng 10</span>
+          </div>
+
+          <div id="letterBodyText" class="text-base sm:text-lg text-green-950/90 whitespace-pre-line leading-8 font-normal min-h-[160px]"></div>
+
+          <div class="mt-8 pt-4 border-t border-green-200/60 flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p class="text-xs text-green-500">Yêu em thật nhiều,</p>
+              <p class="font-handwriting text-2xl sm:text-3xl text-green-700 mt-0.5 sender-name-display">Anh Của Em ❤️</p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button id="btnReplayTypewriter" type="button" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-green-100 text-green-800 hover:bg-green-200 transition">
+                ✍️ Viết lại hiệu ứng chữ
+              </button>
+              <button id="btnCopyLetter" type="button" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-green-600 text-white hover:bg-green-700 transition shadow-sm">
+                📋 Sao chép lời chúc
+              </button>
+              <button id="btnCloseEnvelope" type="button" class="px-3 py-2 rounded-xl text-xs font-medium text-green-600 hover:bg-green-50 transition">
+                Gấp thư lại
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE BOUQUET & SECRET GIFT VOUCHERS SECTION -->
+    <section id="sec-bouquet" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <!-- Interactive Flower Meaning Explorer -->
+      <div class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-widest text-green-500">Vườn Hoa Tặng Em</span>
+            <span class="text-xs font-medium text-green-600 bg-green-50 px-2.5 py-1 rounded-full">Chạm vào từng đóa hoa 🌸</span>
+          </div>
+          <h3 class="text-2xl font-bold font-serif-title text-green-950">5 Đóa Hoa Mang Thông Điệp Yêu Thương</h3>
+          <p class="text-sm text-green-700">Mỗi bông hoa trong bó hoa 20/10 này đều cất giữ một lời khen và lời chúc riêng anh dành cho <span class="recipient-name-display font-semibold">Em Yêu</span>.</p>
+
+          <!-- Flower Buttons Grid -->
+          <div class="flower-picker grid grid-cols-5 gap-2 pt-2">
+            <button type="button" data-flower="0" class="flower-pick-btn p-3 rounded-2xl bg-green-600 text-white shadow-md flex flex-col items-center gap-1 transition transform hover:scale-105">
+              <span class="text-2xl">🌹</span>
+              <span class="text-[11px] font-semibold">Hồng Phấn</span>
+            </button>
+            <button type="button" data-flower="1" class="flower-pick-btn p-3 rounded-2xl bg-white/90 text-green-900 border border-green-200 hover:bg-green-50 flex flex-col items-center gap-1 transition transform hover:scale-105">
+              <span class="text-2xl">🌺</span>
+              <span class="text-[11px] font-semibold">Mẫu Đơn</span>
+            </button>
+            <button type="button" data-flower="2" class="flower-pick-btn p-3 rounded-2xl bg-white/90 text-green-900 border border-green-200 hover:bg-green-50 flex flex-col items-center gap-1 transition transform hover:scale-105">
+              <span class="text-2xl">🌼</span>
+              <span class="text-[11px] font-semibold">Baby Trắng</span>
+            </button>
+            <button type="button" data-flower="3" class="flower-pick-btn p-3 rounded-2xl bg-white/90 text-green-900 border border-green-200 hover:bg-green-50 flex flex-col items-center gap-1 transition transform hover:scale-105">
+              <span class="text-2xl">🌷</span>
+              <span class="text-[11px] font-semibold">Tulip Hồng</span>
+            </button>
+            <button type="button" data-flower="4" class="flower-pick-btn p-3 rounded-2xl bg-white/90 text-green-900 border border-green-200 hover:bg-green-50 flex flex-col items-center gap-1 transition transform hover:scale-105">
+              <span class="text-2xl">🌻</span>
+              <span class="text-[11px] font-semibold">Hướng Dương</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Selected Flower Meaning Card -->
+        <div id="flowerMeaningCard" class="mt-6 p-5 rounded-2xl bg-gradient-to-br from-green-50 via-white to-champagne-50 border border-green-200 shadow-sm space-y-2 transition-all">
+          <div class="flex items-center gap-3">
+            <span id="flowerDetailEmoji" class="text-3xl">🌹</span>
+            <div>
+              <h4 id="flowerDetailName" class="text-base font-bold text-green-950">Hoa Hồng Phấn — Sự Dịu Dàng & Ngọt Ngào</h4>
+              <p id="flowerDetailTag" class="text-xs text-green-500 font-medium">Biểu tượng của tình yêu chân thành</p>
+            </div>
+          </div>
+          <p id="flowerDetailMessage" class="text-sm text-green-800 leading-relaxed pt-1">
+            "Giống như cánh hồng phấn dịu êm trong nắng sớm, nụ cười của em luôn làm tan biến mọi mệt mỏi trong anh. Chúc em tuổi mới và ngày 20/10 luôn rạng rỡ, kiêu sa như đóa hoa đẹp nhất."
+          </p>
+        </div>
+      </div>
+
+      <!-- Secret Gift Vouchers Unwrapping -->
+      <div class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-5">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-widest text-green-500">Đặc Quyền Ngày 20/10</span>
+            <button id="btnResetGifts" type="button" class="text-xs text-green-600 hover:underline font-medium">Đóng gói lại hộp quà</button>
+          </div>
+          <h3 class="text-2xl font-bold font-serif-title text-green-950">3 Hộp Quà & "Love Voucher" Cho Riêng Em</h3>
+          <p class="text-sm text-green-700">Chạm vào từng hộp quà bên dưới để khui ngay đặc quyền vô thời hạn mà <span class="sender-name-display font-semibold">Anh</span> dành tặng em!</p>
+        </div>
+
+        <!-- 3 Gift Cards -->
+        <div id="giftBoxesContainer" class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <div class="p-4 rounded-2xl bg-champagne-50/90 border border-champagne-200 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <span class="text-2xl">🎟️</span>
+            <p class="text-xs sm:text-sm text-champagne-950">
+              <strong>Hiệu lực:</strong> Trọn đời & mọi lúc em muốn! Chỉ cần chụp màn hình gửi cho <span class="sender-name-display font-semibold">Anh</span> là được áp dụng ngay lập tức.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO ALBUM SECTION -->
+    <section id="sec-album" class="glass-card rounded-3xl p-6 sm:p-10 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-green-100 pb-5">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100/80 text-green-700 text-xs font-bold uppercase tracking-wider mb-2">
+            <span>📸</span>
+            <span>Góc Lưu Giữ Khoảnh Khắc</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-bold font-serif-title text-green-950">
+            Album Những Khoảnh Khắc Xinh Đẹp Của <span class="recipient-name-display text-green-600">Em Yêu</span>
+          </h3>
+          <p class="text-sm text-green-700 mt-1">Mỗi bức hình đều lưu giữ nụ cười làm trái tim <span class="sender-name-display font-semibold">Anh</span> rung động.</p>
+        </div>
+
+        <!-- Filter & Upload Controls -->
+        <div class="album-controls flex flex-wrap items-center gap-2">
+
+          <button id="btnStartSlideshow" type="button" class="px-3.5 py-2 rounded-full text-xs font-semibold bg-champagne-50 text-champagne-900 border border-champagne-200 hover:bg-champagne-100 transition flex items-center gap-1.5 shadow-sm">
+            <span id="slideshowIcon">▶️</span>
+            <span id="slideshowText">Trình chiếu</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Polaroid Photo Grid -->
+      <div id="albumGridContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 pt-2">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- MEMORIES & LOVE JAR SECTION -->
+    <section id="sec-memories" class="glass-card rounded-3xl p-6 sm:p-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Couple Illustration Card -->
+        <div class="lg:col-span-5 flex justify-center items-center w-full">
+          <div class="memories-photo-card relative rounded-3xl overflow-hidden shadow-xl border-2 border-white bg-green-50/50 flex items-center justify-center w-full max-w-[320px] sm:max-w-sm mx-auto">
+            <img src="assets/images/album-05.JPG" alt="Khoảnh khắc đáng yêu" class="w-full h-auto object-cover object-center rounded-3xl block" />
+          </div>
+        </div>
+
+        <!-- Interactive Jar of Love Reasons -->
+        <div class="lg:col-span-7 space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-green-500">Lọ Sao Yêu Thương ✨</span>
+              <h3 class="text-2xl sm:text-3xl font-bold font-serif-title text-green-950 mt-1">Những Lý Do Khiến Anh Yêu Em Nhường Nào</h3>
+            </div>
+            <span id="reasonIndexBadge" class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">Ngôi sao #1 / 8</span>
+          </div>
+
+          <p class="text-sm text-green-700">
+            Mỗi khi em cần thêm năng lượng hay muốn biết vì sao em đặc biệt đến thế, hãy rút một ngôi sao nhỏ trong lọ điều ước này nhé:
+          </p>
+
+          <!-- Reason Display Card -->
+          <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-white via-green-50/70 to-emerald-50 border-2 border-green-200 shadow-md relative min-h-[150px] flex flex-col justify-center">
+            <span class="absolute top-4 right-5 text-2xl opacity-80">🌟</span>
+            <p id="loveReasonCategory" class="text-xs font-bold uppercase tracking-wider text-green-500 mb-2">Điều anh trân quý ở em</p>
+            <p id="loveReasonText" class="text-lg sm:text-xl font-serif-title font-semibold text-green-950 leading-relaxed">
+              "Anh yêu cách em mỉm cười mỗi khi nhìn thấy món ăn ngon, vừa hồn nhiên vừa đáng yêu khiến anh chỉ muốn ngắm nhìn mãi."
+            </p>
+          </div>
+
+          <!-- Controls to draw next star or add a new reason -->
+          <div class="reason-actions flex flex-wrap items-center gap-3">
+            <button id="btnNextReason" type="button" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-green-600 to-emerald-500 text-white font-semibold text-sm shadow-md hover:from-green-700 hover:to-emerald-600 transition flex items-center gap-2">
+              <span>✨</span>
+              <span>Rút Ngôi Sao Tiếp Theo</span>
+            </button>
+
+            <button id="btnRandomReason" type="button" class="px-4 py-3 rounded-2xl bg-white text-green-700 border border-green-200 hover:bg-green-50 font-semibold text-sm transition flex items-center gap-1.5">
+              <span>🎲</span>
+              <span>Ngẫu nhiên</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer relative z-20 border-t border-green-200/70 bg-white/60 backdrop-blur-sm py-6 text-center text-xs text-green-700">
+    <p class="font-medium">Được tạo với trọn vẹn yêu thương dành tặng <span class="recipient-name-display font-bold text-green-900">Em Yêu</span> nhân ngày Phụ nữ Việt Nam 20/10 💖</p>
+  </footer>
+
+  <!-- LIGHTBOX PHOTO VIEWER MODAL -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-green-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border-2 border-green-100 flex flex-col md:flex-row">
+      <!-- Image Half -->
+      <div class="lightbox-stage md:w-7/12 bg-green-950/95 relative flex items-center justify-center min-h-[260px] sm:min-h-[380px]">
+        <img id="lightboxImg" src="" alt="Ảnh kỷ niệm phóng to" class="w-full h-full max-h-[70vh] object-contain" />
+        <button id="btnLightboxPrev" type="button" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-green-900 shadow-lg flex items-center justify-center font-bold text-lg transition" title="Ảnh trước">‹</button>
+        <button id="btnLightboxNext" type="button" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-green-900 shadow-lg flex items-center justify-center font-bold text-lg transition" title="Ảnh tiếp theo">›</button>
+      </div>
+
+      <!-- Caption & Controls Half -->
+      <div class="md:w-5/12 p-6 flex flex-col justify-between bg-gradient-to-b from-white via-green-50/40 to-white space-y-4">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span id="lightboxTag" class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">Kỷ niệm 20/10</span>
+            <button id="btnCloseLightbox" type="button" class="w-8 h-8 rounded-full bg-green-50 text-green-700 hover:bg-green-100 flex items-center justify-center font-bold">✕</button>
+          </div>
+          <h4 id="lightboxTitle" class="text-2xl font-bold font-serif-title text-green-950">Nụ Cười Tỏa Nắng</h4>
+          <p id="lightboxCaption" class="text-sm text-green-800 leading-relaxed italic bg-green-50/70 p-4 rounded-2xl border border-green-100"></p>
+        </div>
+
+        <div class="space-y-3 pt-3 border-t border-green-100">
+          <div class="flex items-center justify-between text-xs text-green-500">
+            <span id="lightboxCounter" aria-live="polite">Ảnh 1 / 4</span>
+            <span>Dành riêng tặng <span class="recipient-name-display font-semibold text-green-700">Em Yêu</span></span>
+          </div>
+          <button id="btnLightboxSlideshow" type="button" class="w-full py-2.5 rounded-xl bg-champagne-50 border border-champagne-200 text-champagne-900 text-xs font-semibold" aria-pressed="false">▶ Bắt đầu trình chiếu</button>
+          <div class="flex items-center gap-2">
+            <button id="btnLightboxFav" type="button" class="flex-1 py-2.5 rounded-xl bg-green-600 hover:bg-green-700 text-white text-xs font-semibold transition flex items-center justify-center gap-1.5 shadow-sm">
+              <span id="lightboxFavIcon">❤️</span>
+              <span id="lightboxFavText">Thả tim ảnh này</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="backgroundMusic" preload="none" loop playsinline controlslist="nodownload" hidden>
+    <source src="assets/audio/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="assets/data/content.js"></script>
+  <script src="assets/js/music.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
