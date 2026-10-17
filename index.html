@@ -136,8 +136,6 @@
         <div class="letter-presets flex flex-wrap items-center gap-1.5">
           <span class="text-xs text-green-600 mr-1 font-medium">Chọn phong cách thư:</span>
           <button type="button" data-preset="romantic" class="preset-letter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-green-600 text-white shadow-sm transition">💖 Ngọt ngào</button>
-          <button type="button" data-preset="deep" class="preset-letter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-green-50 text-green-800 hover:bg-green-100 border border-green-200 transition">🌙 Sâu lắng</button>
-          <button type="button" data-preset="cute" class="preset-letter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-green-50 text-green-800 hover:bg-green-100 border border-green-200 transition">🍓 Đáng yêu</button>
           <button type="button" data-preset="poem" class="preset-letter-btn px-3 py-1.5 rounded-full text-xs font-semibold bg-green-50 text-green-800 hover:bg-green-100 border border-green-200 transition">✨ Thơ tình</button>
         </div>
       </div>
@@ -167,17 +165,16 @@
       <!-- Envelope Opened State (Letter Paper) -->
       <div id="envelopeOpenedView" class="hidden mt-6">
         <div class="paper-texture rounded-2xl p-6 sm:p-10 border border-green-200 shadow-inner max-w-3xl mx-auto relative">
-          <div class="flex items-center justify-between mb-4">
-            <p class="font-handwriting text-2xl sm:text-3xl text-green-700">Gửi <span class="recipient-name-display">Em Yêu</span> của anh,</p>
-            <span class="text-xs font-medium text-green-400 bg-green-50 px-3 py-1 rounded-full border border-green-100">Ngày 20 tháng 10</span>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <p class="font-handwriting text-2xl sm:text-3xl text-green-700 font-bold">Gửi em yêu, cô công chúa nhỏ đáng yêu và là cả thế giới dịu dàng của anh 💗</p>
+            <span class="text-xs font-medium text-green-400 bg-green-50 px-3 py-1 rounded-full border border-green-100 shrink-0">Ngày 20 tháng 10</span>
           </div>
 
           <div id="letterBodyText" class="text-base sm:text-lg text-green-950/90 whitespace-pre-line leading-8 font-normal min-h-[160px]"></div>
 
           <div class="mt-8 pt-4 border-t border-green-200/60 flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p class="text-xs text-green-500">Yêu em thật nhiều,</p>
-              <p class="font-handwriting text-2xl sm:text-3xl text-green-700 mt-0.5 sender-name-display">Anh Của Em ❤️</p>
+              <p class="font-handwriting text-2xl sm:text-3xl text-green-700 italic">Anh iu của em 💌</p>
             </div>
 
             <div class="flex flex-wrap items-center gap-2">
@@ -197,9 +194,9 @@
     </section>
 
     <!-- INTERACTIVE BOUQUET & SECRET GIFT VOUCHERS SECTION -->
-    <section id="sec-bouquet" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <section id="sec-bouquet" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
       <!-- Interactive Flower Meaning Explorer -->
-      <div class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+      <div class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 flex flex-col h-full">
         <div class="space-y-4">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold uppercase tracking-widest text-green-500">Vườn Hoa Tặng Em</span>
@@ -234,7 +231,7 @@
         </div>
 
         <!-- Selected Flower Meaning Card -->
-        <div id="flowerMeaningCard" class="mt-6 p-5 rounded-2xl bg-gradient-to-br from-green-50 via-white to-champagne-50 border border-green-200 shadow-sm space-y-2 transition-all">
+        <div id="flowerMeaningCard" class="mt-4 flex-1 flex flex-col justify-center p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-green-50 via-white to-champagne-50 border border-green-200 shadow-sm space-y-2.5 transition-all">
           <div class="flex items-center gap-3">
             <span id="flowerDetailEmoji" class="text-3xl">🌹</span>
             <div>

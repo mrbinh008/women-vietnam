@@ -18,7 +18,13 @@ try {
     if (parsed.recipientName) appState.recipientName = parsed.recipientName;
     if (parsed.senderName) appState.senderName = parsed.senderName;
     if (parsed.startDate) appState.startDate = parsed.startDate;
-    if (parsed.letterText) appState.letterText = parsed.letterText;
+    if (parsed.currentPreset && LETTER_PRESETS[parsed.currentPreset]) {
+      appState.currentPreset = parsed.currentPreset;
+      appState.letterText = LETTER_PRESETS[parsed.currentPreset];
+    } else {
+      appState.currentPreset = 'romantic';
+      appState.letterText = LETTER_PRESETS.romantic;
+    }
     if (Array.isArray(parsed.vouchers) && parsed.vouchers.length === 3) {
       appState.vouchers = parsed.vouchers;
     }
@@ -584,7 +590,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const btnCopyLetter = document.getElementById('btnCopyLetter');
   if (btnCopyLetter) {
     btnCopyLetter.addEventListener('click', () => {
-      const fullText = `Gửi ${appState.recipientName},\n\n${appState.letterText}\n\nYêu em thật nhiều,\n${appState.senderName} ❤️`;
+      const fullText = `Gửi em yêu, cô công chúa nhỏ đáng yêu và là cả thế giới dịu dàng của anh 💗\n\n${appState.letterText}\n\nAnh iu của em 💌`;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(fullText).then(() => {
           showToast('Đã sao chép toàn bộ bức thư tình!', '📋');
